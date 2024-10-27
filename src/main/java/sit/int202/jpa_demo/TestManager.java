@@ -11,11 +11,17 @@ import java.util.Random;
 
 public class TestManager {
     public static void main(String[] args) {
+
+        //สร้าง EntityManagerFactory
         EntityManagerFactory emf = Persistence.
                 createEntityManagerFactory("classicmodels");
+
+        //สร้าง EntityManager
         EntityManager em = emf.createEntityManager();
         Query query = em.createNamedQuery("OFFICE.FIND_BY_CITY");
         query.setParameter("cityParam", "ba%");
+
+        //วิธีลัด
         List<Office> offices = query.getResultList();
         for (Office o : offices) {
             System.out.printf("%-2s %-15s %10s %s\n", o.getOfficeCode(),

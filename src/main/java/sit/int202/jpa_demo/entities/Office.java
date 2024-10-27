@@ -12,6 +12,7 @@ import lombok.ToString;
 import java.io.Serializable;
 
 
+//ขอEntity นี้จากตาราง  offices ในsql
 @Entity
 @Table(name = "offices")
 @Getter
@@ -23,8 +24,10 @@ import java.io.Serializable;
                 query = "select o from Office o where o.city like :cityParam")
 })
 public class Office implements Cloneable {
-    @Id //ต้องมีอยู่ตลอด
-    private String officeCode;
+    @Id //ต้องมีอยู่ตลอด คอลัมน์ในmy sql
+
+    //mysql vachar --> Java String
+    private String officeCode; //--PK---//
     private String city;
     private String phone;
     private String addressLine1;
